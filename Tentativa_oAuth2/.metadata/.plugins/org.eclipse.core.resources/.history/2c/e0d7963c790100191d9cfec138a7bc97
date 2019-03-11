@@ -1,0 +1,37 @@
+package com.desafio.maptriz.desafio;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.desafio.maptriz.desafio.model.Usuario;
+import com.desafio.maptriz.desafio.repository.UsuarioRepository;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DesafioApplication {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DesafioApplication.class);
+
+	public static void main(String[] args) {
+		SpringApplication.run(DesafioApplication.class, args);
+	}
+	
+	@Bean
+	public CommandLineRunner setup(UsuarioRepository usuarioRepository) {
+		return (args) -> {
+			usuarioRepository.save(new Usuario(1, "Gustavo", "24/04/1991", "10067372007", "15/12/2018"));
+			usuarioRepository.save(new Usuario(2, "John", "28/08/1990", "29003996024", "01/12/2018"));
+			usuarioRepository.save(new Usuario(3, "Jim ", "13/10/1980", "59385108050", "01/02/2017"));
+			usuarioRepository.save(new Usuario(4, "David", "17/12/2000", "32432096096", "30/03/2016"));
+			logger.info("The sample data has been generated");
+		};
+	}
+
+}
+

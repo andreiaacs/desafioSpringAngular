@@ -1,0 +1,21 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+body {
+    padding-top: 80px;
+}
+.template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+#imgfundo {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+} 
+form {
+    margin-left: 150px;
+    margin-right: 150px;    
+}
+.btn-primary {
+    margin-right: 100px;  
+}

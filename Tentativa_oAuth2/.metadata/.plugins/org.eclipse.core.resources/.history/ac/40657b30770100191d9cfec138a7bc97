@@ -1,0 +1,5 @@
+package com.desafio.maptriz.desafio.repository;
+
+public class UsuarioRepository {
+
+}

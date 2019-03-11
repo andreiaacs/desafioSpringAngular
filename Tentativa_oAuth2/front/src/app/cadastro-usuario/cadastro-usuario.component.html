@@ -1,0 +1,72 @@
+<div class=”container”>
+
+    <div class="reglist">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>CPF</th>
+                    <th>Data do Último Login</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of usuarios; let i = index">
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.nome }}</td>
+                    <td>{{ u.dataNascimento }}</td>
+                    <td>{{ u.cpf | mask: '000.000.000-00' }}</td>
+                    <td>{{ u.dataUltimoLogin }}</td>
+                    <td>
+                        <button type="button" class="btn btn-info" (click)="onEdit(i,u)">Edit</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(u)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary" (click)="onNew(i)">Novo Usuário</button>
+        </div>
+    </div>
+    <br>
+
+</div>
+
+<div class="regentry" *ngIf="showNew">
+    <form>  <!--(ngSubmit)="onTestPost()"-->
+        <div class="form-group row">
+            <label for="nome" class="col-2 col-form-label">Nome Completo</label>
+            <div class="col-10">
+                <input class="form-control" type="text" [(ngModel)]="regModel.nome" name="nome">
+            </div>
+        </div>        
+        <div class="form-group row">
+            <label for="dataNascimento" class="col-2 col-form-label">Data de Nascimento</label>
+            <div class="col-3 input-group">
+                <input type="text" class="form-control" placeholder="dd/mm/yyyy" name="dataNascimento" [(ngModel)]="regModel.dataNascimento" ngbDatepicker #dob="ngbDatepicker">
+                <button class="input-group-addon" (click)="dob.toggle()" type="button"  style="width: 2.8rem; height: 2.4rem; text-align: center" >
+                    <img src="./assets/imgs/calendar-icon.png" style="width: 2rem; height: 2rem; cursor: pointer;" />
+                </button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cpf" class="col-2 col-form-label">CPF</label>
+            <div class="col-10">
+                <input class="form-control" type="text" [(ngModel)]="regModel.cpf" name="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="senha" class="col-2 col-form-label">Senha</label>
+            <div class="col-10">
+                <input class="form-control" type="password" [(ngModel)]="regModel.senha" name="senha">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" (click)="onCreate()">{{submitType}}</button>
+        <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+</div>

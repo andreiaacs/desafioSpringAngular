@@ -1,0 +1,8 @@
+package com.desafio.maptriz.desafio.service;
+
+public class UsuarioService {
+	
+	Usuario getUsuarioById(long id);
+	List<Usuario> getAllUsuario();
+
+}

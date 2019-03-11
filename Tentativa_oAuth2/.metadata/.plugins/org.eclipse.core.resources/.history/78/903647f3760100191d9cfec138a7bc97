@@ -1,0 +1,5 @@
+package com.desafio.maptriz.desafio.model;
+
+public class Usuario {
+
+}

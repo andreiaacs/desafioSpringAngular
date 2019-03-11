@@ -1,0 +1,28 @@
+package com.desafio.maptriz.desafio.service;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.desafio.maptriz.desafio.repository.UsuarioRepository;
+
+
+@Service("usuarioService")
+public class UsuarioServiceImpl implements UsuarioService {
+	
+	@Autowired
+	UsuarioRepository usuarioRepository; 
+
+	@Override
+	public Usuario getUsuarioById(long id) {
+		return usuarioRepository.findOne(id);
+	}
+
+	@Override
+	public List<Usuario> getAllUsuario() {
+		return usuarioRepository.findAll();
+	}
+
+}
